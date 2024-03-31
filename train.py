@@ -6,11 +6,6 @@ import torchvision
 import torchvision.transforms as transforms
 
 def train_model(model, trainloader, epochs=10, learning_rate=0.001):
-    # Transform the data
-    transform = transforms.Compose(
-        [transforms.ToTensor(),
-         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
-
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9)
 
