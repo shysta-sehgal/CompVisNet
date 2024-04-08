@@ -1,15 +1,7 @@
-# Create Variable Neural Network Architectures - DONE
-# Create training paradigm 
-# Load and begin testing the dataset
-# create test training loop
-
-import torch
 import torch.nn as nn
-import torch.nn.functional as F
-import numpy 
-import torchvision.transforms as transforms
-from torchvision.datasets import MNIST, Omniglot, CIFAR10
-from torch.utils.data import DataLoader
+import torch.nn.functional as f
+# Module for one layer , two layer, and three layer CNNs
+
 
 class OneLayerCNN(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size, stride, padding, dilation, num_classes):
@@ -20,7 +12,7 @@ class OneLayerCNN(nn.Module):
         self.fc = nn.Linear(out_channels * 16 * 16, num_classes)
 
     def forward(self, x):
-        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(f.relu(self.conv1(x)))
         x = x.view(x.size(0), -1)
         x = self.fc(x)
         return x
@@ -39,11 +31,12 @@ class TwoLayerCNN(nn.Module):
         self.fc = nn.Linear(8 * 8 * out_channels2, num_classes)
 
     def forward(self, x):
-        x = self.pool(F.relu(self.conv1(x)))
-        x = self.pool(F.relu(self.conv2(x)))
+        x = self.pool(f.relu(self.conv1(x)))
+        x = self.pool(f.relu(self.conv2(x)))
         x = x.view(x.size(0), -1)
         x = self.fc(x)
         return x
+
 
 class ThreeLayerCNN(nn.Module):
     def __init__(self, in_channels1, out_channels1, kernel_size1, stride1, padding1, dilation1,
@@ -60,9 +53,9 @@ class ThreeLayerCNN(nn.Module):
         self.fc = nn.Linear(4 * 4 * out_channels3, num_classes)
 
     def forward(self, x):
-        x = self.pool(F.relu(self.conv1(x)))
-        x = self.pool(F.relu(self.conv2(x)))
-        x = self.pool(F.relu(self.conv3(x)))
+        x = self.pool(f.relu(self.conv1(x)))
+        x = self.pool(f.relu(self.conv2(x)))
+        x = self.pool(f.relu(self.conv3(x)))
         x = x.view(x.size(0), -1)
         x = self.fc(x)
         return x
