@@ -1,11 +1,11 @@
 import torch
-import torch.nn as nn
-import torch.optim as optim
-import torchvision
-import torchvision.transforms as transforms
 import csv
 
-def test_model(model, testloader, device, model_size, model_type, csv_file='test_results.csv'):
+
+def test_model(model, test_loader, device, model_size, model_type, csv_file='test_results.csv'):
+    """
+    Function for testing the accuracy of the model.
+    """
     model.to(device)
     criterion = torch.nn.CrossEntropyLoss()
     correct = 0
@@ -14,7 +14,7 @@ def test_model(model, testloader, device, model_size, model_type, csv_file='test
 
     with torch.no_grad():
         model.eval()
-        for inputs, labels in testloader:
+        for inputs, labels in test_loader:
             inputs, labels = inputs.to(device), labels.to(device)
             outputs = model(inputs)
             loss = criterion(outputs, labels)
@@ -23,7 +23,7 @@ def test_model(model, testloader, device, model_size, model_type, csv_file='test
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
 
-    avg_loss = test_loss / len(testloader)
+    avg_loss = test_loss / len(test_loader)
     accuracy = 100 * correct / total
 
     print(f'Average test loss: {avg_loss:.4f}, Accuracy: {correct}/{total} ({accuracy:.2f}%)')
@@ -36,7 +36,3 @@ def test_model(model, testloader, device, model_size, model_type, csv_file='test
         writer.writerow([model_size, model_type, avg_loss, accuracy])
 
     return avg_loss, accuracy
-
-# To use this function, you need a testloader (as defined in the train_model function) and a trained model.
-# Example usage (assuming the testloader and a model are already defined and the model is trained):
-# test_model(model, testloader)
