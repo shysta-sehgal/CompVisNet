@@ -2,8 +2,7 @@ import torch
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 from torchvision.datasets import MNIST, CIFAR10
-from conv_config_cifar import one_layer_configs, two_layer_configs, three_layer_configs
-from conv_config_mnist import one_layer_mnist, two_layer_mnist, three_layer_mnist
+from conv_config import one_layer_configs, two_layer_configs, three_layer_configs
 from net_structures import OneLayerCNN, TwoLayerCNN, ThreeLayerCNN
 from test import test_model
 from train import train_model
@@ -129,5 +128,5 @@ trainLoader, testLoader = get_cifar10_loaders(batch_size=64)
 
 # results_cifar = mass_test_cnn_models(trainLoader, testLoader, one_layer_configs, two_layer_configs, three_layer_configs,
 #                                      num_classes=10, num_epochs=5)
-results_mnist = mass_test_cnn_models(trainLoader, testLoader, one_layer_mnist, two_layer_mnist, three_layer_mnist,
+results_mnist = mass_test_cnn_models(trainLoader, testLoader, one_layer_configs, two_layer_configs, three_layer_configs,
 num_classes=10, num_epochs=5)
