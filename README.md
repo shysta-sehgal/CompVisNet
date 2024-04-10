@@ -14,6 +14,7 @@ This repository contains a Python project for comparing the performance of convo
 - `mnist_training_metrics.csv`: Includes training accuracy and loss per epoch per model configuration on MNIST
 - `mnist_test_results.csv`: Includes testing accuracy and loss per model configuration on MNIST
 - `analysis.ipynb`: Includes several data visualisations for interpretation of results obtained in the CSVs
+- `report.pdf`: Paper detailing all background and related work, materials and methods, results, discussions and conclusions
 
 ## Getting Started
 
