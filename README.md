@@ -1,4 +1,4 @@
-# Convolutional Neural Network Comparison for Image Classification
+# Deciphering Cognition: An Investigation into CNN Architectures
 
 This repository contains a Python project for comparing the performance of convolutional neural networks (CNNs) with different layers and configurations on image classification tasks. It supports experimentation with one-layer, two-layer, and three-layer CNNs on the MNIST and CIFAR-10 datasets.
 
